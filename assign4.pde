@@ -29,7 +29,6 @@ boolean downPressed = false;
 boolean leftPressed = false;
 boolean rightPressed = false;
 boolean[] spacePressed = new boolean[shootCount];
-boolean[] sBoom = new boolean[shootCount];
 boolean[][] remove = new boolean[3][8];
 boolean[][] flame = new boolean[3][8];
 
@@ -89,7 +88,6 @@ void setup(){
   s = new Shoot[shootCount];
   for(int i = 0; i < shootCount; i++){
     spacePressed[i] = false;
-    sBoom[i] = true;
     s[i] = new Shoot();
   }
 }
@@ -265,9 +263,6 @@ void draw() {
               flame[i][j] = false;
             }
           }           
-          for(int i = 0; i < shootCount; i++){
-            sBoom[i] = true;
-          }
           gameState = GAME_RUN;
         }else{
           image(end1Img, 0, 0);
@@ -321,7 +316,6 @@ void keyPressed(){
   }
   if (key == ' ') {
     spacePressed[shootNum] = true;
-    sBoom[shootNum] = true;
     shootNum++;           
     if(shootNum > (shootCount -1)){
       shootNum = 0;
@@ -360,8 +354,7 @@ void boom(float x, float y, int i, int a){
   for(int j = 0; j < shootCount; j++){
     if(s[j].shootX + shootImg.width >= x && s[j].shootX <= x + enemyImg.width && s[j].shootY + shootImg.height >= y && s[j].shootY <= y + enemyImg.height){ 
     remove[a][i] = false;
-    flame[a][i] = true;    
-    sBoom[j] = false;
+    flame[a][i] = true;  
     }
   }
 }
