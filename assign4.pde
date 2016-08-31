@@ -181,7 +181,7 @@ void draw() {
             x_enemys[enemyArray][i] = enemyX - i*enemySpacingX;
             y_enemys[enemyArray][i] = enemyY;
             image(enemyImg, x_enemys[enemyArray][i], y_enemys[enemyArray][i]);  
-            hpDamage(x_enemys[enemyArray][i], y_enemys[enemyArray][i], i, enemyArray);  
+            crush(x_enemys[enemyArray][i], y_enemys[enemyArray][i], i, enemyArray);  
             boom(x_enemys[enemyArray][i], y_enemys[enemyArray][i], i, enemyArray);
           }              
           Flame(x_enemys[enemyArray][i], y_enemys[enemyArray][i], i, enemyArray);
@@ -196,7 +196,7 @@ void draw() {
             x_enemys[enemyArray][i] = enemyX - i*enemySpacingX;
             y_enemys[enemyArray][i] = enemyY + i*enemySpacingY;
             image(enemyImg, x_enemys[enemyArray][i], y_enemys[enemyArray][i]);  
-            hpDamage(x_enemys[enemyArray][i], y_enemys[enemyArray][i], i, enemyArray);
+            crush(x_enemys[enemyArray][i], y_enemys[enemyArray][i], i, enemyArray);
             boom(x_enemys[enemyArray][i], y_enemys[enemyArray][i], i, enemyArray);
           }              
           Flame(x_enemys[enemyArray][i], y_enemys[enemyArray][i], i, enemyArray);
@@ -217,13 +217,13 @@ void draw() {
               x_enemys[enemyArray][i] = enemyX + (i-8)*enemySpacingX;
               y_enemys[enemyArray][i] = enemyY - j*enemySpacingY;
               image(enemyImg, x_enemys[enemyArray][i], y_enemys[enemyArray][i]); 
-              hpDamage(x_enemys[enemyArray][i], y_enemys[enemyArray][i], i, enemyArray);
+              crush(x_enemys[enemyArray][i], y_enemys[enemyArray][i], i, enemyArray);
               boom(x_enemys[enemyArray][i], y_enemys[enemyArray][i], i, enemyArray);
             }else{
               x_enemys[enemyArray][i] = enemyX - i*enemySpacingX;
               y_enemys[enemyArray][i] = enemyY + j*enemySpacingY;
               image(enemyImg, x_enemys[enemyArray][i], y_enemys[enemyArray][i]);  
-              hpDamage(x_enemys[enemyArray][i], y_enemys[enemyArray][i], i, enemyArray);
+              crush(x_enemys[enemyArray][i], y_enemys[enemyArray][i], i, enemyArray);
               boom(x_enemys[enemyArray][i], y_enemys[enemyArray][i], i, enemyArray);
             }         
           }
@@ -342,7 +342,7 @@ void keyReleased(){
   }
 }
 
-void hpDamage(float x, float y, int i, int a){
+void crush(float x, float y, int i, int a){
   if(fighterX + fighterImg.width >= x && fighterX <= x + enemyImg.width && fighterY + fighterImg.height >= y && fighterY <= y+enemyImg.height){
     remove[a][i] = false;
     hp -= hpDamage; 
